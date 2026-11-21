@@ -14,7 +14,7 @@ main{max-width:1160px;margin:32px auto;padding:0 18px 55px}.intro{display:flex;j
 .page{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;margin:0 0 26px;box-shadow:0 8px 25px #18233a08}.page.active{display:block}.pagehead{display:flex;justify-content:space-between;gap:14px;align-items:start}.page h2{margin:0;font-size:25px}.page .desc{color:var(--muted);margin:7px 0 18px}.back{border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 14px}.field.full{grid-column:1/-1}label{display:block;font-weight:700;font-size:13px;margin:13px 0 7px}input,textarea,select{width:100%;border:1px solid #dbe2ec;border-radius:11px;padding:12px;outline-color:#8984ff;background:white;color:var(--ink)}textarea{min-height:115px;resize:vertical}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.output{white-space:pre-wrap;background:#f7f8fc;border:1px solid var(--line);border-radius:12px;padding:14px;min-height:58px;margin-top:14px;overflow-wrap:anywhere}.notice{background:#fff8e8;border:1px solid #f4dfae;color:#795414;border-radius:12px;padding:12px;font-size:13px;line-height:1.5;margin-top:14px}.hidden{display:none!important}.preview{max-width:100%;max-height:300px;display:block;margin-top:12px;border-radius:12px}
 footer{text-align:center;padding:25px;color:var(--muted);font-size:13px}
 @media(max-width:800px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:520px){header{padding:16px 16px 38px}.hero{margin-top:42px}.hero p{font-size:16px}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.tool{padding:13px;min-height:180px}.tool h3{font-size:14px}.tool p{font-size:12px}.intro{display:block}.page{padding:15px}.fields{grid-template-columns:1fr}.field.full{grid-column:auto}.search button{padding:10px 12px}}
-</style></head><body>
+  </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body>
 <header><nav><div class="logo">AI<span>Mate</span></div><a class="navlink" href="#tools" id="navTools">Explore tools</a></nav>
 <section class="hero"><div class="eyebrow">YOUR EVERYDAY AI TOOLKIT</div><h1>Create more. Work smarter.</h1><p>Helpful tools for writing, content creation, images, career growth and everyday productivity.</p><div class="search"><input id="search" placeholder="Search 41 tools..." aria-label="Search tools"><button class="primary" id="searchBtn">Search</button></div></section></header>
 <main id="tools">
@@ -94,4 +94,13 @@ $('backBtn').onclick=closePage;$('search').oninput=renderGrid;$('searchBtn').onc
 function route(){let slug=location.hash.startsWith('#tool/')?location.hash.slice(6):'';if(slug)openTool(slug);else $('toolPage').classList.remove('active')}
 window.addEventListener('hashchange',()=>{let slug=location.hash.startsWith('#tool/')?location.hash.slice(6):'';if(slug)openTool(slug);else $('toolPage').classList.remove('active')});
 $('year').textContent=new Date().getFullYear();renderFilters();renderGrid();route();
+</script><script>
+const SUPABASE_URL = 'https://elxjmiisgebvjajriyio.supabase.co';
+
+const SUPABASE_ANON_KEY = 'sb_publishable_3SxGtDWIvSer-Ck1SbSKcQ_Ul_dWv8N';
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+);
 </script></body></html>
