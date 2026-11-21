@@ -124,9 +124,15 @@ footer{text-align:center;padding:25px;color:var(--muted);font-size:13px}
   background: #eee;
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      }</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body>
 <header><nav><div class="logo">AI<span>Mate</span></div><a class="navlink" href="#tools" id="navTools">Explore tools</a>
+
+<span id="userEmail" style="display:none;"></span>
+
 <button type="button" id="loginBtn">Login</button>
 <button type="button" id="signupBtn">Sign Up</button>
-</nav>
+
+<button type="button" id="logoutBtn" style="display:none;">
+  Logout
+</button>
 <section class="hero"><div class="eyebrow">YOUR EVERYDAY AI TOOLKIT</div><h1>Create more. Work smarter.</h1><p>Helpful tools for writing, content creation, images, career growth and everyday productivity.</p><div class="search"><input id="search" placeholder="Search 41 tools..." aria-label="Search tools"><button class="primary" id="searchBtn">Search</button></div></section></header>
 <main id="tools">
 <section class="page" id="toolPage"><div class="pagehead"><div><h2 id="pageTitle">Tool</h2><p class="desc" id="pageDesc"></p></div><button class="back" id="backBtn">← All tools</button></div><div id="formArea"></div><div class="actions"><button class="primary" id="runBtn">Run tool</button><button class="secondary" id="clearBtn">Clear</button><button class="secondary" id="copyBtn">Copy result</button></div><div class="output" id="result" aria-live="polite">Your result will appear here.</div><div class="notice" id="notice">AI features require a secure backend connection. No fabricated AI output will be shown.</div></section>
@@ -243,6 +249,43 @@ const authSubmit = document.getElementById('authSubmit');
 const authSwitch = document.getElementById('authSwitch');
 const authSwitchText = document.getElementById('authSwitchText');
 const authMessage = document.getElementById('authMessage');
+  const userEmail = document.getElementById('userEmail');
+const logoutBtn = document.getElementById('logoutBtn');
+
+async function updateAuthUI(session) {
+  const loggedIn = !!session?.user;
+
+  userEmail.style.display = loggedIn ? 'inline-block' : 'none';
+  userEmail.textContent = loggedIn ? session.user.email : '';
+
+  document.getElementById('loginBtn').style.display =
+    loggedIn ? 'none' : 'inline-block';
+
+  document.getElementById('signupBtn').style.display =
+    loggedIn ? 'none' : 'inline-block';
+
+  logoutBtn.style.display = loggedIn ? 'inline-block' : 'none';
+}
+
+supabaseClient.auth.getSession().then(({ data }) => {
+  updateAuthUI(data.session);
+});
+
+supabaseClient.auth.onAuthStateChange((event, session) => {
+  updateAuthUI(session);
+
+  if (event === 'SIGNED_OUT') {
+    authModal.style.display = 'none';
+  }
+});
+
+logoutBtn.addEventListener('click', async () => {
+  const { error } = await supabaseClient.auth.signOut();
+
+  if (error) {
+    alert(error.message);
+  }
+});
 
 function openAuth(mode) {
   authMode = mode;
