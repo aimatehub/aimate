@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AIMate – Your AI Workspace, All in One Place</title>
+<meta name="description" content="41 AI tools for writing, creators, careers, business, study and SEO.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f5ff;--card:#fff;--tx:#17142b;--mu:#645f80;--bd:#e3e0f5;--p:#6d4aff;--p2:#ff5c8a;--p3:#12b9a6;--sh:0 8px 28px rgba(80,60,200,.12)}
+[data-t=dark]{--bg:#0f0d1c;--card:#1a1730;--tx:#f0eeff;--mu:#a7a2c8;--bd:#2d2950;--sh:0 8px 28px rgba(0,0,0,.4)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 Inter,system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+h1,h2,h3,.logo{font-family:Sora,Inter,sans-serif;letter-spacing:-.02em;margin:0}
+a{color:var(--p)}button,input,select,textarea{font:inherit;color:inherit}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:12px;padding:12px 5%;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--bd)}
+.logo{font-size:1.4rem;font-weight:800;text-decoration:none;background:linear-gradient(90deg,var(--p),var(--p2));-webkit-background-clip:text;background-clip:text;color:transparent;cursor:pointer}
+nav{margin-left:auto;display:flex;gap:6px;align-items:center}nav a.l{display:none;padding:6px 10px;color:var(--tx);text-decoration:none;font-weight:500;border-radius:8px}nav a.l:hover{background:var(--bd)}
+@media(min-width:800px){nav a.l{display:inline-block}}
+.ib{width:42px;height:42px;border-radius:12px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-size:1.15rem}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;padding:10px 18px;border-radius:12px;border:0;cursor:pointer;font-weight:600;background:linear-gradient(90deg,var(--p),var(--p2));color:#fff;text-decoration:none;transition:transform .15s,opacity .15s}
+.btn:hover{transform:translateY(-1px)}.btn:disabled{opacity:.55;cursor:wait}.btn.s{background:var(--card);color:var(--tx);border:1px solid var(--bd)}.btn.sm{padding:6px 12px;font-size:.9rem}
+main{max-width:1150px;margin:auto;padding:0 5% 60px}section{padding:34px 0}
+.hero{padding:56px 0 24px;text-align:center}.hero h1{font-size:clamp(2.1rem,7vw,3.8rem);font-weight:800;line-height:1.08;max-width:14ch;margin:0 auto 16px}
+.hero p{max-width:56ch;margin:0 auto 24px;color:var(--mu)}
+.search{max-width:560px;margin:auto;display:flex;gap:8px}.search input{flex:1}
+input,select,textarea{width:100%;padding:11px 13px;border-radius:12px;border:1px solid var(--bd);background:var(--card)}
+textarea{min-height:96px;resize:vertical}input:focus,select:focus,textarea:focus,button:focus-visible{outline:2px solid var(--p);outline-offset:1px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.chip{padding:7px 14px;border-radius:99px;border:1px solid var(--bd);background:var(--card);cursor:pointer;font-weight:500}.chip.on{background:var(--p);border-color:var(--p);color:#fff}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.tc{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:18px;cursor:pointer;box-shadow:var(--sh);transition:transform .2s,border-color .2s;text-align:left}.tc:hover{transform:translateY(-3px);border-color:var(--p)}
+.tc .ic{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;color:#fff;font-weight:700;margin-bottom:10px}.tc h3{font-size:1.02rem}.tc p{margin:4px 0 0;color:var(--mu);font-size:.9rem}.tc small{color:var(--p);font-weight:600}
+.feat{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}.feat div{padding:18px;border-left:4px solid var(--p3);background:var(--card);border-radius:0 14px 14px 0}
+.panel{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:20px;box-shadow:var(--sh);margin-top:16px}
+.row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}label{display:block;font-weight:600;font-size:.9rem;margin:10px 0 4px}
+#out,.out{min-height:140px;white-space:pre-wrap;padding:14px;border:1px dashed var(--bd);border-radius:12px;background:var(--bg);overflow-wrap:anywhere}
+.bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.err{color:#d6284f;font-weight:600;margin-top:10px}.ok{color:var(--p3);font-weight:600}
+.spin{width:18px;height:18px;border:3px solid #fff5;border-top-color:#fff;border-radius:50%;animation:r .7s linear infinite}@keyframes r{to{transform:rotate(1turn)}}
+.msgs{height:50vh;overflow:auto;display:flex;flex-direction:column;gap:10px;padding:8px}.m{max-width:85%;padding:10px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere}.m.user{align-self:flex-end;background:var(--p);color:#fff}.m.assistant{align-self:flex-start;background:var(--bg);border:1px solid var(--bd)}
+.chat{display:grid;gap:14px}@media(min-width:800px){.chat{grid-template-columns:220px 1fr}}
+.hl button{display:block;width:100%;text-align:left;padding:8px;border:0;background:none;border-radius:8px;cursor:pointer}.hl button.on{background:var(--bd)}
+#ov{position:fixed;inset:0;background:#0007;opacity:0;pointer-events:none;transition:opacity .25s;z-index:40}#ov.o{opacity:1;pointer-events:auto}
+#dr{position:fixed;top:0;right:0;bottom:0;width:min(320px,86vw);background:var(--card);z-index:50;transform:translateX(100%);transition:transform .28s;display:flex;flex-direction:column;padding:18px;box-shadow:-8px 0 30px #0004}#dr.o{transform:none}
+#dr .who{padding:12px 0 14px;border-bottom:1px solid var(--bd);margin-bottom:8px;overflow-wrap:anywhere;font-weight:600}#dr a{padding:11px 8px;border-radius:10px;color:var(--tx);text-decoration:none;cursor:pointer}#dr a:hover{background:var(--bd)}
+footer{border-top:1px solid var(--bd);padding:28px 5%;text-align:center;color:var(--mu)}footer a{margin:0 8px;cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--tx);color:var(--bg);padding:10px 18px;border-radius:99px;z-index:90}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style></head><body>
+<header><a class="logo" onclick="go('/')">AIMate</a>
+<nav><a class="l" onclick="go('/')">Home</a><a class="l" onclick="go('/all')">Tools</a><a class="l" onclick="go('/page/about')">About</a><a class="l" onclick="go('/page/contact')">Contact</a>
+<button class="ib" id="th" aria-label="Toggle theme">◐</button><button class="ib" id="hb" aria-label="Open menu">☰</button></nav></header>
+<div id="ov"></div>
+<aside id="dr" aria-hidden="true"><div style="display:flex;justify-content:space-between;align-items:center"><span class="logo">AIMate</span><button class="ib" id="cl" aria-label="Close menu">✕</button></div>
+<div class="who" id="who">Guest</div>
+<a data-g="/page/account" id="lg">Login / Account</a><a data-g="/page/about">About Us</a><a data-g="/page/contact">Contact Us</a><a data-g="/page/privacy">Privacy Policy</a><a data-g="/page/terms">Terms</a><a data-g="/page/help">Help Center</a><a data-g="/page/report">Report a Problem</a>
+<div style="margin-top:auto"><button class="btn s sm" id="lo" style="display:none">Logout</button></div></aside>
+<main id="app"></main>
+<footer><div><a onclick="go('/page/about')">About</a><a onclick="go('/page/privacy')">Privacy</a><a onclick="go('/page/terms')">Terms</a><a onclick="go('/page/help')">Help</a><a href="mailto:aimatehub2@gmail.com">aimatehub2@gmail.com</a></div><p>© 2026 AIMate. AI output can contain mistakes — review before use.</p></footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+const SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL",SUPABASE_PUBLISHABLE_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY",WORKER_URL="YOUR_CLOUDFLARE_WORKER_URL";
+const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const slug=n=>n.toLowerCase().replace(/&/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const toast=m=>{const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2200)};
+const L="English|Urdu|Hindi|Arabic|Spanish|French|German|Turkish",TN="Professional|Friendly|Casual|Persuasive|Formal|Humorous",PL="Instagram|Facebook|TikTok|YouTube|LinkedIn|X (Twitter)";
+const CAT={Writing:"#6d4aff",Creator:"#ff5c8a",Image:"#f59e0b",Career:"#0ea5e9",Business:"#12b9a6",Utility:"#8b5cf6",AI:"#ec4899",Education:"#22c55e",SEO:"#ef4444",Other:"#14b8a6"};
+// [name,category,description,kind,fields "Label|type|options" (t text,a textarea,s select,n number,d date,p photo)]
+const R=[
+["AI Article Writer","Writing","Write full articles from a topic.","ai","Topic|t;Keywords|t;Tone|s|"+TN+";Length|s|Short (400 words)|Medium (800 words)|Long (1500 words);Language|s|"+L],
+["Text Rewriter","Writing","Rewrite text in a new style.","ai","Text|a;Style|s|Simpler|More formal|More persuasive|Shorter|Friendlier;Language|s|"+L],
+["Grammar Checker","Writing","Fix grammar and spelling.","ai","Text|a;Language|s|"+L],
+["Email Writer","Writing","Draft clear emails fast.","ai","Purpose|t;Recipient|t;Tone|s|"+TN+";Key details|a;Language|s|"+L],
+["Caption Generator","Creator","Captions for any post.","ai","Topic|a;Platform|s|"+PL+";Tone|s|"+TN+";Language|s|"+L],
+["Hashtag Generator","Creator","Relevant hashtags by topic.","ai","Topic|t;Platform|s|"+PL+";Niche|t"],
+["YouTube Title Maker","Creator","Click-worthy video titles.","ai","Video topic|a;Style|s|Curiosity|How-to|Listicle|Story|Review;Language|s|"+L],
+["Description Maker","Creator","SEO video descriptions.","ai","Video topic|t;Key points|a;Keywords|t;Language|s|"+L],
+["Image Prompt Maker","Creator","Prompts for AI image tools.","ai","Idea|a;Art style|s|Photorealistic|3D render|Anime|Watercolor|Cinematic|Flat illustration;Aspect ratio|s|1:1|16:9|9:16|4:3"],
+["Facebook Post Generator","Creator","Engaging Facebook posts.","ai","Topic|a;Goal|s|Engagement|Sales|Announcement|Event;Tone|s|"+TN+";Language|s|"+L],
+["Instagram Bio Generator","Creator","Bios that fit 150 characters.","ai","About you or brand|a;Tone|s|"+TN+";Language|s|"+L],
+["YouTube Thumbnail Prompt Maker","Creator","Thumbnail prompts and text.","ai","Video topic|t;Mood|s|Exciting|Mysterious|Funny|Serious|Inspiring;Main subject|t"],
+["Logo Prompt Generator","Creator","Prompts for logo design.","ai","Brand name|t;Industry|t;Style|s|Minimal|Playful|Luxury|Techy|Vintage;Colors|t"],
+["AI Story Generator","Creator","Original short stories.","ai","Idea|a;Genre|s|Adventure|Fantasy|Mystery|Sci-fi|Romance|Kids;Characters|t;Length|s|Short|Medium|Long;Language|s|"+L],
+["Script to Scene Planner","Creator","Turn scripts into scenes.","ai","Script|a;Format|s|YouTube video|Short film|Reel/Short|Ad"],
+["YouTube Shorts Script Generator","Creator","Hook-to-CTA Shorts scripts.","ai","Topic|t;Niche|t;Audience|t;Language|s|"+L+";Duration|s|15 seconds|30 seconds|45 seconds|60 seconds;Style|s|Educational|Funny|Storytelling|Motivational|News;Call to action|t"],
+["Image Resizer","Image","Resize and convert images in your browser.","img",""],
+["AI CV Maker","Career","Build a CV and export a PDF.","cv","Full name|t;Email|t;Phone|t;Address|t;Professional title|t;Target job title|t;Education|a;Work experience|a;Skills|a;Languages|t;Certifications|a;Projects|a;Achievements|a;Additional information|a"],
+["Cover Letter Maker","Career","Tailored cover letters as PDF.","cl","Full name|t;Email|t;Phone|t;Address|t;Company name|t;Job title|t;Job description|a;Education|a;Work experience|a;Skills|a;Additional information|a"],
+["ATS Resume Checker","Career","Score a resume against a job.","ai","Resume text|a;Job description|a"],
+["Interview Question Generator","Career","Practice questions for any role.","ai","Job title|t;Level|s|Entry|Mid|Senior;Focus|s|Mixed|Behavioral|Technical|Situational"],
+["Job Application Email Writer","Career","Application emails that get read.","ai","Job title|t;Company|t;Your name|t;Your background|a;Tone|s|Professional|Friendly|Confident;Language|s|"+L],
+["LinkedIn Profile Writer","Career","Headline and About section.","ai","Name|t;Current role|t;Target role|t;Experience facts|a;Skills|a;Tone|s|Professional|Friendly|Bold"],
+["Job Interview Answer Coach","Career","Strong answers from your background.","ai","Job title|t;Industry|t;Experience level|s|Entry|Mid|Senior;Interview question|a;Your background|a;Language|s|"+L],
+["Business Name Generator","Business","Brandable business names.","ai","Business idea|a;Industry|t;Style|s|Modern|Classic|Playful|Luxury|Short"],
+["Product Description Maker","Business","Descriptions that sell.","ai","Product name|t;Features|a;Audience|t;Tone|s|"+TN+";Language|s|"+L],
+["Ad Copy Generator","Business","Ads for any platform.","ai","Product or service|t;Audience|t;Platform|s|"+PL+"|Google Ads;Offer|t;Language|s|"+L],
+["Business Plan Maker","Business","Full plan with labeled estimates.","ai","Business name|t;Idea|a;Location|t;Budget|t;Target customers|t;Business type|s|Product|Service|Online|Retail|Food|Other;Goals|a"],
+["Word Counter","Utility","Count words, characters and reading time.","wc",""],
+["Password Generator","Utility","Secure random passwords.","pw",""],
+["Translator","Utility","Translate text between languages.","tr",""],
+["Text to Speech","Utility","Read text aloud with your device voices.","tts",""],
+["Age Calculator","Utility","Exact age and next birthday.","age",""],
+["AI Chat Assistant","AI","Chat with an AI assistant.","chat",""],
+["AI Study Notes Maker","Education","Notes from your material.","ai","Material|a;Subject|t;Detail|s|Brief|Detailed;Language|s|"+L],
+["Quiz Generator","Education","Quizzes from any topic.","ai","Topic or text|a;Questions|n;Difficulty|s|Easy|Medium|Hard"],
+["Flashcard Maker","Education","Q&A flashcards.","ai","Material|a;Cards|n"],
+["SEO Keyword Generator","SEO","Keyword ideas with intent.","ai","Topic|t;Country|t;Language|s|"+L],
+["Meta Title & Description Maker","SEO","Meta tags within limits.","ai","Page topic|t;Main keyword|t;Brand|t;Language|s|"+L],
+["WhatsApp Message Writer","Other","Messages for any situation.","ai","Purpose|t;Recipient|t;Language|s|"+L+";Tone|s|"+TN+";Details|a"],
+["Content Calendar Maker","Other","Plan a month of content.","ai","Business or niche|t;Platforms|t;Period|s|1 week|2 weeks|1 month;Goal|t;Language|s|"+L]
+].map(r=>({name:r[0],cat:r[1],desc:r[2],kind:r[3],id:slug(r[0]),f:(r[4]||"").split(";").filter(Boolean).map(x=>{const p=x.split("|");return{l:p[0],t:p[1],o:p.slice(2)}})}));
+const POP=["ai-article-writer","ai-cv-maker","ai-chat-assistant","youtube-shorts-script-generator","translator","cover-letter-maker","text-to-speech","image-prompt-maker"];
+const ini=n=>n.split(" ").slice(0,2).map(w=>w[0]).join("");
+const card=t=>`<button class="tc" onclick="go('/tool/${t.id}')"><div class="ic" style="background:${CAT[t.cat]}">${esc(ini(t.name))}</div><h3>${esc(t.name)}</h3><p>${esc(t.desc)}</p><small>${t.cat}</small></button>`;
+// ---- auth
+let sb=null,user=null;
+try{if(!SUPABASE_URL.startsWith("YOUR_")&&window.supabase)sb=supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{auth:{persistSession:true,autoRefreshToken:true}})}catch(e){}
+function upd(){$("#who").textContent=user?user.email:"Guest";$("#lo").style.display=user?"":"none";$("#lg").textContent=user?"Account":"Login / Account"}
+if(sb){sb.auth.getSession().then(({data})=>{user=data.session?data.session.user:null;upd();route()});sb.auth.onAuthStateChange((_e,s)=>{user=s?s.user:null;upd();if(location.hash.startsWith("#/page/"))route()})}
+$("#lo").onclick=async()=>{if(sb)await sb.auth.signOut();user=null;upd();closeDr();toast("Logged out");go("/")};
+// ---- drawer/theme
+const openDr=()=>{$("#dr").classList.add("o");$("#ov").classList.add("o");$("#dr").setAttribute("aria-hidden","false")},closeDr=()=>{$("#dr").classList.remove("o");$("#ov").classList.remove("o");$("#dr").setAttribute("aria-hidden","true")};
+$("#hb").onclick=openDr;$("#cl").onclick=closeDr;$("#ov").onclick=closeDr;document.addEventListener("keydown",e=>e.key==="Escape"&&closeDr());
+document.querySelectorAll("#dr a[data-g]").forEach(a=>a.onclick=()=>{closeDr();go(a.dataset.g)});
+const setT=t=>{document.documentElement.dataset.t=t;try{localStorage.setItem("aimate_t",t)}catch(e){}};
+setT((()=>{try{return localStorage.getItem("aimate_t")}catch(e){}})()||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"));
+$("#th").onclick=()=>setT(document.documentElement.dataset.t==="dark"?"light":"dark");
+// ---- api
+async function api(path,body){
+ if(WORKER_URL.startsWith("YOUR_"))throw new Error("WORKER_URL is not configured in index.html.");
+ let r;try{r=await fetch(WORKER_URL.replace(/\/$/,"")+path,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)})}catch(e){throw new Error("Cannot reach the server. Check your connection and the Worker URL.")}
+ let d={};try{d=await r.json()}catch(e){}
+ if(!r.ok||d.error)throw new Error(d.error||"Request failed ("+r.status+").");return d.result}
+// ---- routing
+const go=p=>{location.hash="#"+p};window.go=go;
+function route(){const h=location.hash.slice(1)||"/",a=$("#app");scrollTo(0,0);
+ if(h==="/")return home(a);if(h==="/all")return home(a,true);
+ if(h.startsWith("/tool/")){const t=R.find(x=>x.id===h.slice(6));return t?tool(a,t):home(a)}
+ if(h.startsWith("/page/"))return page(a,h.slice(6));home(a)}
+addEventListener("hashchange",route);
+function home(a,onlyAll){
+ a.innerHTML=`${onlyAll?"":`<div class="hero"><h1>Your AI Workspace, All in One Place</h1><p>AIMate brings 41 focused tools together: write, create, apply for jobs, plan a business, study and more. Pick a tool, fill in the form, get results.</p><div class="search"><input id="q" placeholder="Search 41 tools…" aria-label="Search tools"></div></div>
+ <section><h2>Popular tools</h2><div class="grid" style="margin-top:14px">${POP.map(i=>card(R.find(t=>t.id===i))).join("")}</div></section>`}
+ <section id="all"><h2>All tools</h2>${onlyAll?`<div class="search" style="margin:14px 0"><input id="q" placeholder="Search tools…"></div>`:""}<div class="chips" id="cats"></div><div class="grid" id="tg"></div><p id="none" class="out" style="display:none">No tools match. Try another word or category.</p></section>
+ ${onlyAll?"":`<section><h2>Why AIMate</h2><div class="feat" style="margin-top:14px"><div><b>One tool, one purpose</b><br>Every tool has its own form and options.</div><div><b>Private by design</b><br>Utilities like Word Counter, Password Generator and Image Resizer run in your browser.</div><div><b>Works everywhere</b><br>Responsive on Android and desktop, light and dark.</div><div><b>Honest AI</b><br>Career tools never invent your experience.</div></div></section>
+ <section><h2>About AIMate</h2><p style="max-width:70ch;color:var(--mu)">AIMate is a workspace of 41 AI-assisted and everyday tools for writers, creators, job seekers, students and small businesses. <a href="#/page/about">Read more</a>.</p></section>`}`;
+ let cat="All",q="";const cs=["All",...Object.keys(CAT)];
+ const draw=()=>{$("#cats").innerHTML=cs.map(c=>`<button class="chip ${c===cat?"on":""}" data-c="${c}">${c}</button>`).join("");
+  const l=R.filter(t=>(cat==="All"||t.cat===cat)&&(t.name+t.desc+t.cat).toLowerCase().includes(q));$("#tg").innerHTML=l.map(card).join("");$("#none").style.display=l.length?"none":"block";
+  document.querySelectorAll("#cats .chip").forEach(b=>b.onclick=()=>{cat=b.dataset.c;draw()})};
+ $("#q").oninput=e=>{q=e.target.value.toLowerCase().trim();draw();if(q&&!onlyAll)$("#all").scrollIntoView()};draw()}
+// ---- tool pages
+function head(t){return `<section><button class="btn s sm" onclick="history.length>1?history.back():go('/')">← Back</button><h1 style="margin-top:14px;font-size:clamp(1.6rem,5vw,2.4rem)">${esc(t.name)}</h1><p style="color:var(--mu)">${esc(t.desc)}</p>`}
+function form(t){return t.f.map((f,i)=>{const n=`f${i}`,L=`<label for="${n}">${esc(f.l)}</label>`;
+ if(f.t==="a")return L+`<textarea id="${n}"></textarea>`;if(f.t==="s")return L+`<select id="${n}">${f.o.map(o=>`<option>${esc(o)}</option>`).join("")}</select>`;
+ if(f.t==="n")return L+`<input id="${n}" type="number" min="1" max="30" value="5">`;
+ return L+`<input id="${n}" type="text">`}).join("")}
+const getF=t=>{const o={};t.f.forEach((f,i)=>o[f.l]=$("#f"+i).value.trim());return o};
+function outBar(extra=""){return `<div class="bar"><button class="btn s sm" id="cp">Copy</button><button class="btn s sm" id="dl">Download .txt</button>${extra}<button class="btn s sm" id="cx">Clear</button></div>`}
+function wireOut(name){const o=()=>$("#out");
+ $("#cp").onclick=async()=>{const t=o().innerText.trim();if(!t)return toast("Nothing to copy");try{await navigator.clipboard.writeText(t);toast("Copied")}catch(e){toast("Copy blocked by browser")}};
+ $("#dl").onclick=()=>{const t=o().innerText.trim();if(!t)return toast("Nothing to download");const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([t],{type:"text/plain"}));a.download=slug(name)+".txt";a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000)};
+ $("#cx").onclick=()=>{o().textContent="";$("#er").textContent=""}}
+function pdf(text,title,photo,sub){
+ if(!window.jspdf)return toast("PDF library failed to load. Check your connection.");
+ const d=new window.jspdf.jsPDF({unit:"pt",format:"a4"}),W=d.internal.pageSize.getWidth(),m=48;let y=m;
+ if(photo){try{d.addImage(photo,photo.includes("png")?"PNG":"JPEG",W-m-80,m,80,80)}catch(e){}}
+ d.setFont("helvetica","bold");d.setFontSize(20);d.text(title||"",m,y+12);y+=30;
+ if(sub){d.setFont("helvetica","normal");d.setFontSize(10);d.splitTextToSize(sub,W-2*m-(photo?100:0)).forEach(l=>{d.text(l,m,y);y+=13});y+=6}
+ if(photo)y=Math.max(y,m+95);d.setFontSize(11);
+ text.replace(/\*\*/g,"").replace(/^#+\s*/gm,"").split("\n").forEach(raw=>{const isH=/^[A-Z][A-Za-z &\/]{2,40}:?$/.test(raw.trim())&&raw.trim().length<40;d.setFont("helvetica",isH?"bold":"normal");
+  d.splitTextToSize(raw,W-2*m).forEach(l=>{if(y>800){d.addPage();y=m}d.text(l,m,y);y+=15})});
+ d.save(slug(title||"document")+".pdf")}
+function tool(a,t){
+ const k=t.kind;
+ if(k==="chat")return chat(a,t);if(k==="wc")return wc(a,t);if(k==="pw")return pw(a,t);if(k==="age")return age(a,t);if(k==="img")return img(a,t);if(k==="tts")return tts(a,t);if(k==="tr")return tr(a,t);
+ const isCV=k==="cv",isCL=k==="cl";
+ a.innerHTML=head(t)+`<div class="panel"><div class="row">${form(t)}</div>${isCV?`<label>Profile photo (optional)</label><input type="file" id="ph" accept="image/*"><div class="bar"><img id="pp" alt="" style="display:none;width:80px;height:80px;object-fit:cover;border-radius:12px"><button class="btn s sm" id="rp" style="display:none">Remove photo</button></div>`:""}
+ <div class="bar"><button class="btn" id="go">Generate</button><button class="btn s" id="rg" style="display:none">Regenerate</button></div><div class="err" id="er"></div></div>
+ <div class="panel"><h3>Output ${isCV||isCL?"(editable — edit before downloading)":""}</h3><div id="out" ${isCV||isCL?'contenteditable="true"':""} aria-live="polite"></div>${outBar(isCV||isCL?`<button class="btn sm" id="pdf">Download PDF</button>`:"")}</div></section>`;
+ let photo=null;
+ if(isCV){$("#ph").onchange=e=>{const f=e.target.files[0];if(!f)return;if(!/^image\//.test(f.type)||f.size>5e6){$("#er").textContent="Choose an image under 5 MB.";return}const r=new FileReader();r.onload=()=>{photo=r.result;$("#pp").src=photo;$("#pp").style.display="";$("#rp").style.display=""};r.readAsDataURL(f)};
+  $("#rp").onclick=()=>{photo=null;$("#ph").value="";$("#pp").style.display="none";$("#rp").style.display="none"}}
+ wireOut(t.name);
+ const run=async()=>{$("#er").textContent="";const f=getF(t),filled=Object.values(f).some(v=>v&&!/^\d+$/.test(v));
+  const must=t.f.find((x,i)=>x.t!=="s"&&x.t!=="n"&&!$("#f"+i).value.trim()&&(i===0||isCL&&x.l==="Job description"));if(must&&!filled||must&&must===t.f[0]){$("#er").textContent="Please fill in: "+must.l+".";return}
+  const b=$("#go");b.disabled=true;b.innerHTML='<span class="spin"></span> Generating…';
+  try{$("#out").textContent=await api("/generate",{tool:t.id,fields:f});$("#rg").style.display=""}catch(e){$("#er").textContent=e.message}
+  b.disabled=false;b.textContent="Generate"};
+ $("#go").onclick=run;$("#rg").onclick=run;
+ if(isCV||isCL)$("#pdf").onclick=()=>{const txt=$("#out").innerText.trim();if(!txt)return toast("Generate content first");const f=getF(t);
+  pdf(txt,isCV?f["Full name"]||"CV":"Cover Letter",isCV?photo:null,[f["Email"],f["Phone"],f["Address"]].filter(Boolean).join("  |  "))}}
+// ---- local tools
+function wc(a,t){a.innerHTML=head(t)+`<div class="panel"><textarea id="x" style="min-height:200px" placeholder="Paste or type text"></textarea><div class="row" id="st" style="margin-top:12px"></div><div class="bar"><button class="btn s sm" id="cp">Copy text</button><button class="btn s sm" id="cx">Clear</button></div></div></section>`;
+ const u=()=>{const s=$("#x").value,w=(s.trim().match(/\S+/g)||[]).length,sn=(s.match(/[^.!?]+[.!?]+/g)||[]).length,p=s.split(/\n\s*\n/).filter(x=>x.trim()).length;
+  $("#st").innerHTML=[["Words",w],["Characters",s.length],["No spaces",s.replace(/\s/g,"").length],["Sentences",sn],["Paragraphs",p],["Reading time",Math.ceil(w/200)+" min"]].map(x=>`<div class="tc" style="cursor:default"><small>${x[0]}</small><h3>${x[1]}</h3></div>`).join("")};
+ $("#x").oninput=u;u();$("#cp").onclick=()=>navigator.clipboard.writeText($("#x").value).then(()=>toast("Copied"),()=>toast("Copy blocked"));$("#cx").onclick=()=>{$("#x").value="";u()}}
+function pw(a,t){a.innerHTML=head(t)+`<div class="panel"><label>Length: <b id="lv">16</b></label><input type="range" id="ln" min="8" max="64" value="16"><div class="bar"><label><input type="checkbox" id="u" checked style="width:auto"> Uppercase</label><label><input type="checkbox" id="lc" checked style="width:auto"> Lowercase</label><label><input type="checkbox" id="nu" checked style="width:auto"> Numbers</label><label><input type="checkbox" id="sy" checked style="width:auto"> Symbols</label></div><div class="bar"><button class="btn" id="go">Generate</button></div><div class="err" id="er"></div></div><div class="panel"><div id="out" class="out" style="min-height:0;font-family:monospace;font-size:1.1rem"></div><div class="bar"><button class="btn s sm" id="cp">Copy</button><button class="btn s sm" id="cx">Clear</button></div></div></section>`;
+ $("#ln").oninput=()=>$("#lv").textContent=$("#ln").value;
+ $("#go").onclick=()=>{let s="";if($("#u").checked)s+="ABCDEFGHIJKLMNOPQRSTUVWXYZ";if($("#lc").checked)s+="abcdefghijklmnopqrstuvwxyz";if($("#nu").checked)s+="0123456789";if($("#sy").checked)s+="!@#$%^&*()-_=+[]{};:,.?";
+  if(!s)return $("#er").textContent="Select at least one character type.";$("#er").textContent="";const n=+$("#ln").value,r=new Uint32Array(n);crypto.getRandomValues(r);$("#out").textContent=[...r].map(v=>s[v%s.length]).join("")};
+ $("#cp").onclick=()=>{const v=$("#out").textContent;if(!v)return toast("Generate a password first");navigator.clipboard.writeText(v).then(()=>toast("Copied"),()=>toast("Copy blocked"))};$("#cx").onclick=()=>$("#out").textContent=""}
+function age(a,t){a.innerHTML=head(t)+`<div class="panel"><label for="b">Date of birth</label><input type="date" id="b"><div class="bar"><button class="btn" id="go">Calculate</button></div><div class="err" id="er"></div></div><div class="panel"><div id="out" class="out"></div><div class="bar"><button class="btn s sm" id="cp">Copy</button><button class="btn s sm" id="cx">Clear</button></div></div></section>`;
+ $("#b").max=new Date().toISOString().slice(0,10);
+ $("#go").onclick=()=>{const v=$("#b").value;if(!v)return $("#er").textContent="Choose your date of birth.";const b=new Date(v+"T00:00:00"),n=new Date();if(b>n)return $("#er").textContent="Date of birth cannot be in the future.";$("#er").textContent="";
+  let y=n.getFullYear()-b.getFullYear(),m=n.getMonth()-b.getMonth(),d=n.getDate()-b.getDate();if(d<0){m--;d+=new Date(n.getFullYear(),n.getMonth(),0).getDate()}if(m<0){y--;m+=12}
+  let nx=new Date(n.getFullYear(),b.getMonth(),b.getDate());if(nx<new Date(n.getFullYear(),n.getMonth(),n.getDate()))nx=new Date(n.getFullYear()+1,b.getMonth(),b.getDate());const days=Math.round((nx-new Date(n.getFullYear(),n.getMonth(),n.getDate()))/864e5);
+  $("#out").textContent=`Age: ${y} years, ${m} months, ${d} days\nTotal days lived: ${Math.floor((n-b)/864e5)}\nNext birthday: ${nx.toDateString()} (in ${days} days)`};
+ $("#cp").onclick=()=>{const v=$("#out").textContent;if(!v)return toast("Calculate first");navigator.clipboard.writeText(v).then(()=>toast("Copied"),()=>toast("Copy blocked"))};$("#cx").onclick=()=>$("#out").textContent=""}
+function img(a,t){let im=null,url=null,nm="image";a.innerHTML=head(t)+`<div class="panel"><label>Image file</label><input type="file" id="fi" accept="image/*"><div class="row"><div><label>Width (px)</label><input type="number" id="w" min="1" max="8000"></div><div><label>Height (px)</label><input type="number" id="h" min="1" max="8000"></div><div><label>Format</label><select id="fm"><option value="image/jpeg">JPEG</option><option value="image/png">PNG</option><option value="image/webp">WebP</option></select></div><div><label>Quality (JPEG/WebP)</label><input type="range" id="qu" min="0.3" max="1" step="0.05" value="0.9"></div></div><label><input type="checkbox" id="lk" checked style="width:auto"> Keep aspect ratio</label><div class="bar"><button class="btn" id="go">Resize</button></div><div class="err" id="er"></div></div><div class="panel"><img id="pv" alt="Preview" style="max-width:100%;display:none;border-radius:12px"><div class="bar"><button class="btn sm" id="dl">Download image</button><button class="btn s sm" id="cx">Clear</button></div></div></section>`;
+ $("#fi").onchange=e=>{const f=e.target.files[0];if(!f)return;if(!/^image\//.test(f.type))return $("#er").textContent="That file is not an image.";nm=f.name.replace(/\.[^.]+$/,"");const i=new Image();i.onload=()=>{im=i;$("#w").value=i.width;$("#h").value=i.height;$("#er").textContent=""};i.onerror=()=>$("#er").textContent="Could not read that image.";i.src=URL.createObjectURL(f)};
+ $("#w").oninput=()=>{if(im&&$("#lk").checked)$("#h").value=Math.round($("#w").value*im.height/im.width)};$("#h").oninput=()=>{if(im&&$("#lk").checked)$("#w").value=Math.round($("#h").value*im.width/im.height)};
+ $("#go").onclick=()=>{if(!im)return $("#er").textContent="Choose an image first.";const w=+$("#w").value,h=+$("#h").value;if(!(w>0&&h>0&&w<=8000&&h<=8000))return $("#er").textContent="Enter a width and height between 1 and 8000.";
+  const c=document.createElement("canvas");c.width=w;c.height=h;const x=c.getContext("2d");if($("#fm").value==="image/jpeg"){x.fillStyle="#fff";x.fillRect(0,0,w,h)}x.drawImage(im,0,0,w,h);
+  c.toBlob(b=>{if(!b)return $("#er").textContent="Export failed.";if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(b);$("#pv").src=url;$("#pv").style.display="";$("#er").textContent=""},$("#fm").value,+$("#qu").value)};
+ $("#dl").onclick=()=>{if(!url)return toast("Resize an image first");const a=document.createElement("a");a.href=url;a.download=nm+"-"+$("#w").value+"x"+$("#h").value+"."+$("#fm").value.split("/")[1].replace("jpeg","jpg");a.click()};
+ $("#cx").onclick=()=>{im=null;url=null;$("#pv").style.display="none";$("#fi").value="";$("#w").value=$("#h").value=""}}
+function tr(a,t){a.innerHTML=head(t)+`<div class="panel"><div class="row"><div><label>From</label><select id="fr"><option>Auto-detect</option>${L.split("|").map(o=>`<option>${o}</option>`).join("")}</select></div><div><label>To</label><select id="to">${L.split("|").map(o=>`<option>${o}</option>`).join("")}</select></div></div><label>Text</label><textarea id="tx"></textarea><div class="bar"><button class="btn" id="go">Translate</button></div><div class="err" id="er"></div></div><div class="panel"><div id="out"></div>${outBar()}</div></section>`;wireOut(t.name);
+ $("#go").onclick=async()=>{const x=$("#tx").value.trim();if(!x)return $("#er").textContent="Enter text to translate.";$("#er").textContent="";const b=$("#go");b.disabled=true;b.innerHTML='<span class="spin"></span> Translating…';
+  try{$("#out").textContent=await api("/translate",{text:x,from:$("#fr").value,to:$("#to").value})}catch(e){$("#er").textContent=e.message}b.disabled=false;b.textContent="Translate"}}
+function tts(a,t){const ok="speechSynthesis"in window;const LC={English:"en",Urdu:"ur",Hindi:"hi",Arabic:"ar",Spanish:"es",French:"fr",German:"de",Turkish:"tr"};
+ a.innerHTML=head(t)+`<div class="panel">${ok?"":'<div class="err">Your browser does not support speech synthesis.</div>'}<label>Text</label><textarea id="tx"></textarea><div class="row"><div><label>Language</label><select id="lg2">${Object.keys(LC).map(o=>`<option>${o}</option>`).join("")}</select></div><div><label>Voice</label><select id="vo"></select></div><div><label>Speed: <b id="rv">1</b></label><input type="range" id="rt" min="0.5" max="2" step="0.1" value="1"></div><div><label>Pitch: <b id="pv">1</b></label><input type="range" id="pt" min="0.5" max="2" step="0.1" value="1"></div></div>
+ <div class="bar"><button class="btn" id="pl">Play</button><button class="btn s" id="pa">Pause</button><button class="btn s" id="re">Resume</button><button class="btn s" id="st">Stop</button></div><div class="err" id="er"></div><p style="color:var(--mu);font-size:.9rem">Playback uses voices installed on your device. MP3 download is not available in this version (see README).</p></div></section>`;
+ if(!ok)return;const fill=()=>{const c=LC[$("#lg2").value],v=speechSynthesis.getVoices().filter(x=>x.lang.toLowerCase().startsWith(c));$("#vo").innerHTML=v.length?v.map(x=>`<option>${esc(x.name)}</option>`).join(""):`<option value="">No installed voice for this language</option>`};
+ speechSynthesis.onvoiceschanged=fill;fill();$("#lg2").onchange=fill;$("#rt").oninput=()=>$("#rv").textContent=$("#rt").value;$("#pt").oninput=()=>$("#pv").textContent=$("#pt").value;
+ $("#pl").onclick=()=>{const x=$("#tx").value.trim();if(!x)return $("#er").textContent="Enter text first.";speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(x),c=LC[$("#lg2").value],v=speechSynthesis.getVoices().find(v=>v.name===$("#vo").value);u.lang=v?v.lang:c;if(v)u.voice=v;else if(!speechSynthesis.getVoices().some(v=>v.lang.toLowerCase().startsWith(c)))$("#er").textContent="No installed voice for this language; your device may use a default voice.";else $("#er").textContent="";u.rate=+$("#rt").value;u.pitch=+$("#pt").value;u.onerror=e=>{if(e.error!=="canceled"&&e.error!=="interrupted")$("#er").textContent="Speech failed: "+e.error};speechSynthesis.speak(u)};
+ $("#pa").onclick=()=>speechSynthesis.pause();$("#re").onclick=()=>speechSynthesis.resume();$("#st").onclick=()=>speechSynthesis.cancel()}
+// ---- chat
+function chat(a,t){let st=[];try{st=JSON.parse(localStorage.getItem("aimate_chats")||"[]")}catch(e){}let cur=null;const save=()=>{try{localStorage.setItem("aimate_chats",JSON.stringify(st.slice(0,30)))}catch(e){}};
+ a.innerHTML=head(t)+`<div class="chat panel"><div class="hl"><button class="btn sm" id="nc" style="width:100%;margin-bottom:8px">New Chat</button><div id="hl"></div></div><div><div class="msgs" id="ms"></div><div class="err" id="er"></div><div class="bar"><textarea id="in" style="min-height:48px;flex:1" placeholder="Type a message (Enter to send, Shift+Enter for new line)"></textarea><button class="btn" id="sd">Send</button></div><div class="bar"><button class="btn s sm" id="cpl">Copy last reply</button><button class="btn s sm" id="rg">Regenerate</button><button class="btn s sm" id="cc">Clear conversation</button></div></div></div></section>`;
+ const draw=()=>{$("#hl").innerHTML=st.map(c=>`<button data-i="${c.id}" class="${cur&&cur.id===c.id?"on":""}">${esc(c.title)}</button>`).join("");document.querySelectorAll("#hl button").forEach(b=>b.onclick=()=>{cur=st.find(c=>c.id===b.dataset.i);draw();msgs()});};
+ const msgs=()=>{$("#ms").innerHTML="";(cur?cur.m:[]).forEach(m=>{const d=document.createElement("div");d.className="m "+m.role;d.textContent=m.content;$("#ms").append(d)});$("#ms").scrollTop=1e9};
+ const nw=()=>{cur={id:String(Date.now()),title:"New chat",m:[]};st.unshift(cur);draw();msgs()};
+ const ask=async()=>{$("#er").textContent="";const b=$("#sd");b.disabled=true;b.innerHTML='<span class="spin"></span>';const l=document.createElement("div");l.className="m assistant";l.textContent="Thinking…";$("#ms").append(l);$("#ms").scrollTop=1e9;
+  try{const r=await api("/generate",{tool:"ai-chat-assistant",messages:cur.m});cur.m.push({role:"assistant",content:r});save()}catch(e){$("#er").textContent=e.message}b.disabled=false;b.textContent="Send";msgs()};
+ const send=()=>{const v=$("#in").value.trim();if(!v)return;if(!cur)nw();if(cur.m.length===0)cur.title=v.slice(0,28);cur.m.push({role:"user",content:v});$("#in").value="";draw();save();msgs();ask()};
+ $("#sd").onclick=send;$("#in").onkeydown=e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();send()}};$("#nc").onclick=nw;
+ $("#cc").onclick=()=>{if(cur){cur.m=[];cur.title="New chat";save();draw();msgs()}};
+ $("#cpl").onclick=()=>{const l=cur&&[...cur.m].reverse().find(m=>m.role==="assistant");if(!l)return toast("No reply yet");navigator.clipboard.writeText(l.content).then(()=>toast("Copied"),()=>toast("Copy blocked"))};
+ $("#rg").onclick=()=>{if(!cur||!cur.m.length)return toast("Nothing to regenerate");if(cur.m[cur.m.length-1].role==="assistant")cur.m.pop();if(cur.m.length&&cur.m[cur.m.length-1].role==="user")ask()};
+ draw();if(st.length){cur=st[0];draw();msgs()}}
+// ---- pages
+const PG={about:["About Us","<p>AIMate is a workspace of 41 AI-assisted and everyday tools for writing, content creation, careers, business, study and SEO. AI features run through a secure server so no private keys are ever exposed in your browser.</p><p>AI output may be inaccurate. Always review it, especially CVs, cover letters and business plans, before you use it.</p>"],
+privacy:["Privacy Policy","<p><b>Template — have it reviewed before launch.</b></p><p>Text you submit to AI tools is sent to our server and an AI provider (OpenRouter) to produce a response. Utility tools (Word Counter, Password Generator, Age Calculator, Image Resizer, Text to Speech) run locally in your browser. Account data (email) is handled by Supabase. Chat history is stored only in your browser. We do not sell personal data.</p><p>Contact: aimatehub2@gmail.com</p>"],
+terms:["Terms & Conditions","<p><b>Template — have it reviewed before launch.</b></p><p>AIMate is provided as is, without warranties. You are responsible for reviewing AI output and for how you use it. Do not use the service for unlawful, harmful or deceptive purposes. Do not submit sensitive personal data you are not allowed to share. We may change or discontinue features at any time.</p>"],
+help:["Help Center","<h3>Tool shows a Worker URL error</h3><p>The site owner must set WORKER_URL in index.html.</p><h3>Generation failed</h3><p>Try again; if it persists, the server's AI key or model may need attention.</p><h3>No voice for a language</h3><p>Text to Speech uses voices installed on your device; install a voice in your system settings.</p><h3>Password reset</h3><p>Use “Forgot password” on the Login page.</p><p>Still stuck? Email <a href='mailto:aimatehub2@gmail.com'>aimatehub2@gmail.com</a>.</p>"]};
+function mailForm(a,title,subj){a.innerHTML=`<section><h1>${title}</h1>${title==="Contact Us"?`<p>Email us directly: <a href="mailto:aimatehub2@gmail.com">aimatehub2@gmail.com</a></p>`:""}<div class="panel"><p style="color:var(--mu)">This form opens your email app with the message prepared. Nothing is sent from this site until you send it from your email app.</p><label>Name</label><input id="n"><label>Email</label><input id="e" type="email"><label>Subject</label><input id="s" value="${esc(subj)}"><label>Message</label><textarea id="m"></textarea><div class="err" id="er"></div><div class="bar"><button class="btn" id="go">Open in email app</button></div></div></section>`;
+ $("#go").onclick=()=>{const n=$("#n").value.trim(),e=$("#e").value.trim(),s=$("#s").value.trim(),m=$("#m").value.trim();if(!n||!/^\S+@\S+\.\S+$/.test(e)||!s||!m)return $("#er").textContent="Fill in name, a valid email, subject and message.";location.href="mailto:aimatehub2@gmail.com?subject="+encodeURIComponent(s)+"&body="+encodeURIComponent(m+"\n\nFrom: "+n+" <"+e+">")}}
+function page(a,p){if(PG[p]){a.innerHTML=`<section style="max-width:760px"><h1>${PG[p][0]}</h1>${PG[p][1]}</section>`;return}
+ if(p==="contact")return mailForm(a,"Contact Us","");if(p==="report")return mailForm(a,"Report a Problem","Problem report");
+ if(p==="account"&&!user)return authView(a,"login");if(p==="account")return account(a);if(p==="login"||p==="signup"||p==="reset")return authView(a,p);home(a)}
+function account(a){a.innerHTML=`<section style="max-width:520px"><h1>Account</h1><div class="panel"><p>Signed in as<br><b>${esc(user.email)}</b></p><div class="bar"><button class="btn s" id="lo2">Logout</button></div></div></section>`;$("#lo2").onclick=()=>$("#lo").click()}
+function authView(a,mode){const T={login:"Login",signup:"Sign Up",reset:"Reset Password"}[mode];
+ a.innerHTML=`<section style="max-width:460px"><h1>${T}</h1><div class="panel">${sb?"":'<div class="err">Authentication is not configured. Set SUPABASE_URL and SUPABASE_PUBLISHABLE_KEY in index.html.</div>'}<label>Email</label><input id="e" type="email" autocomplete="email">${mode==="reset"?"":'<label>Password</label><input id="p" type="password" autocomplete="'+(mode==="login"?"current":"new")+'-password">'}<div class="err" id="er"></div><div class="ok" id="ok"></div>
+ <div class="bar"><button class="btn" id="go">${T}</button></div><p>${mode==="login"?'<a href="#/page/reset">Forgot password?</a> · <a href="#/page/signup">Create account</a>':'<a href="#/page/login">Back to login</a>'}</p></div></section>`;
+ $("#go").onclick=async()=>{$("#er").textContent=$("#ok").textContent="";const e=$("#e").value.trim(),p=$("#p")?$("#p").value:"";
+  if(!sb)return $("#er").textContent="Authentication is not configured.";if(!/^\S+@\S+\.\S+$/.test(e))return $("#er").textContent="Enter a valid email.";if(mode!=="reset"&&p.length<6)return $("#er").textContent="Password must be at least 6 characters.";
+  const b=$("#go");b.disabled=true;let r;
+  try{if(mode==="login"){r=await sb.auth.signInWithPassword({email:e,password:p});if(!r.error){toast("Logged in");go("/page/account")}}
+   else if(mode==="signup"){r=await sb.auth.signUp({email:e,password:p,options:{emailRedirectTo:location.origin+location.pathname}});if(!r.error)$("#ok").textContent=r.data.session?"Account created.":"Check your email to confirm your account, then log in."}
+   else{r=await sb.auth.resetPasswordForEmail(e,{redirectTo:location.origin+location.pathname});if(!r.error)$("#ok").textContent="If that email has an account, a reset link is on its way."}
+   if(r.error)$("#er").textContent=r.error.message}catch(x){$("#er").textContent="Network error. Try again."}b.disabled=false}}
+upd();route();
+</script></body></html>
