@@ -57,7 +57,9 @@ footer{border-top:1px solid var(--bd);padding:28px 5%;text-align:center;color:va
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script>
-const SUPABASE_URL="YOUR_SUPABASE_PROJECT_URL",SUPABASE_PUBLISHABLE_KEY="YOUR_SUPABASE_PUBLISHABLE_KEY",WORKER_URL="YOUR_CLOUDFLARE_WORKER_URL";
+const SUPABASE_URL="https://elxjmiisgebvjajriyio.supabase.co",
+SUPABASE_PUBLISHABLE_KEY="sb_publishable_3SxGtDWIvSer-Ck1SbSKcQ_Ul_dWv8N",
+WORKER_URL="https://aimate-api.numansageer02.workers.dev";
 const $=s=>document.querySelector(s),esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const slug=n=>n.toLowerCase().replace(/&/g,"").replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 const toast=m=>{const t=document.createElement("div");t.className="toast";t.textContent=m;document.body.append(t);setTimeout(()=>t.remove(),2200)};
